@@ -1,0 +1,38 @@
+@use '../abstracts' as *;
+
+.site-header {
+  position: relative;
+  color: $site-header-color;
+  padding: $site-header-padding;
+  border-bottom-left-radius: $border-radius-2;
+  background-image: url('/images/bg-pattern-intro-mobile.svg');
+  background-size: 350%;
+  background-position: 35% 30%;
+  background-repeat: no-repeat;
+  overflow: hidden;
+
+  @include mq(medium) {
+    background-image: url('/images/bg-pattern-intro-desktop.svg');
+    background-size: 220%;
+    background-position: 25% 55%;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: $site-header-background-color;
+  }
+
+  &__inner {
+    display: flex;
+    gap: $site-header-gap;
+    align-items: $site-header-alignment;
+    justify-content: $site-header-jusitifcation-small-screens;
+
+    @include mq(medium) {
+      justify-content: $site-header-jusitifcation-large-screens;
+    }
+  }
+}

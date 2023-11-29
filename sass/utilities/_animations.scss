@@ -1,0 +1,50 @@
+@use '../abstracts/' as *;
+
+.slide-in {
+  --_slide-offset-neg: calc(var(--_slide-offset) * -1);
+
+  opacity: 0;
+  transition: $animation-slide-in-transition;
+
+  @include mq(medium) {
+    &[data-slide-direction='from-left'] {
+      transform: translateX(
+        var((--_slide-offset-neg), calc(#{$animation-slide-in-offset} * -1))
+      );
+    }
+
+    &[data-slide-direction='from-right'] {
+      transform: translateX(
+        var(--_slide-offset, #{$animation-slide-in-offset})
+      );
+    }
+
+    &[data-slide-direction='from-top'] {
+      transform: translateY(
+        var(--_slide-offset-neg, calc(#{$animation-slide-in-offset} * -1))
+      );
+    }
+
+    &[data-slide-direction='from-bottom'] {
+      transform: translateY(
+        var(--_slide-offset, #{$animation-slide-in-offset})
+      );
+    }
+  }
+
+  &.appear {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: $animation-fade-in-transition;
+
+  &.appear {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

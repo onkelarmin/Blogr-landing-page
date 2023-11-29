@@ -1,0 +1,76 @@
+@use '../abstracts/' as *;
+
+.infrastructure {
+  position: relative;
+  display: grid;
+  grid-template-columns: subgrid;
+
+  margin-top: $size-13;
+
+  &__bg {
+    position: absolute;
+    top: 10.7rem;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+
+    background: linear-gradient(
+      135deg,
+      $color-neutral-700 0%,
+      $color-neutral-600 100%
+    );
+    border-top-right-radius: $border-radius-2;
+    border-bottom-left-radius: $border-radius-2;
+    overflow: hidden;
+
+    display: grid;
+    justify-content: center;
+    align-content: start;
+
+    .circles {
+      width: 160%;
+      aspect-ratio: 1;
+      transform: translateX(-18%) translateY(-40%);
+    }
+  }
+
+  &__inner {
+    grid-column: content;
+
+    text-align: center;
+  }
+
+  &__content {
+    padding-bottom: $size-13;
+  }
+
+  @include mq(large) {
+    margin-top: $size-2;
+
+    &__inner {
+      display: grid;
+      grid-template-columns: subgrid;
+
+      gap: 2rem;
+    }
+
+    &__bg {
+      top: 4rem;
+      bottom: 6rem;
+
+      justify-content: start;
+
+      .circles {
+        width: 100%;
+        transform: translateX(-20%) translateY(-45%);
+      }
+    }
+
+    &__content {
+      align-self: center;
+
+      text-align: start;
+    }
+  }
+}
